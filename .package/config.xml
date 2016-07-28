@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/LinkedMaps" version="1.0.0" viewmodes="maximized">
     <access origin="*" subdomains="false"></access>
-    <tizen:application id="BW08vTW8wW.LinkedMaps" package="BW08vTW8wW" required_version="2.3.1"/>
+    <tizen:application id="0ldXwBNODO.LinkedMaps" package="0ldXwBNODO" required_version="2.3.1"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
@@ -12,5 +12,5 @@
     <tizen:privilege name="http://tizen.org/privilege/appmanager.launch"/>
     <tizen:privilege name="http://tizen.org/privilege/bluetooth"/>
     <tizen:profile name="wearable"/>
-    <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
+    <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
 </widget>

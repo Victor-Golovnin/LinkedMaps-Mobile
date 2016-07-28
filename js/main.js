@@ -1,13 +1,19 @@
-var serviceApplicationId = "BW08vTW8wW.bluetoothleservice";
+var serviceApplicationId = "0ldXwBNODO.bluetoothleservice";
 var remotePort;
+var bluetoothEnabled;
 
 
 function setAdv(command, lat, lng, stamp)
 {
+	console.log("ADV ", command, lat, lng, stamp);
 	remotePort.sendMessage([{
 		key : "command",
-		value : command // string
+		value : "setAdv" // string
 	} , 
+	{
+		key: "subcommand",
+		value: command
+	},
 	{
 		key: "lat",
 		value: lat // string
@@ -69,21 +75,51 @@ tizen.application.launch(serviceApplicationId, function() {
 	});
 
 
+function sendGeoposition()
+{
+	navigator.geolocation.getCurrentPosition(
+			function(l){
+				console.log(l);
+				globalStampCounter++;
+				setAdv("0", l.coords.latitude.toString(), l.coords.longitude.toString(), globalStampCounter.toString());
+				}, 
+				function(e)
+				{
+					console.error(e);
+				});
+}
+
 window.onload = function() {
-	console.log("ONLOAD");
 
 var localPort = tizen.messageport.requestLocalMessagePort("BLE_WEB");
 var localPortWatchId = localPort.addMessagePortListener(getMsg);
 
 
-window.onload = function() {
-	// TODO:: Do your initialization job
 
-	// add eventListener for tizenhwkey
-	window
-			.addEventListener(
+bluetoothEnabled = localStorage.getItem("bluetoothEnabled");
+if (bluetoothEnabled === null)
+{
+	bluetoothEnabled = false;
+	localStorage.setItem("bluetoothEnabled", false);
+}
+$("#bluetoothCheckbox").prop("checked", bluetoothEnabled);
+$("#bluetoothCheckbox").click(function(){
+	bluetoothEnabled = $(this).prop("checked");
+});
+
+
+
+
+
+window.addEventListener(
 					'tizenhwkey',
 					function(ev) {
+						
+						if (ev.keyName === "menu")
+						{
+							tau.changePage("#menuPage");
+						}
+						
 						if (ev.keyName !== "back")
 							return;
 

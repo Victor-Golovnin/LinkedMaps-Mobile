@@ -4,14 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, user-scalable=no" />
 
-<meta name="description" content="Digital Watch Application" />
+<meta name="description" content="LinkedMaps Mobile" />
 <title>Digital Watch</title>
-<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)"
-	href="lib/tau/wearable/theme/default/tau.circle.min.css">
 <link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
 <script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
-
-
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
 
@@ -22,18 +18,30 @@
 	<div id="mainPage" class="ui-page ui-page-active">
 		<div class="ui-content">
 			<div id="mmm"
-				style="position: absolute; top: 0px; left: 0px; width: 360px; height: 360px;"></div>
+				style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
 			<button type="button" class="ui-more" id="menuButton"></button>
 		</div>
 		<button class="ui-btn" id="goButton" style='display: none'>Go</button>
 
 	</div>
 	<div id="menuPage" class="ui-page">
-		<div id="menuSelector" class="ui-selector">
-			<div class="ui-item show-icon" data-title="Back"></div>
-			<div class="ui-item human-icon" data-title="Search"></div>
-			<div class="ui-item delete-icon" data-title="Routes"></div>
+		
+		<div class="ui-header" data-position="fixed">
+			<h1>Menu</h1>
 		</div>
+		<div class="ui-content">
+			<ul class="ui-listview">
+				<li class="ui-li-anchor"><a href="#routesMain">Routes</a></li>
+				<li class="ui-li-anchor"><a href="#searchByAddressPage">Search</a></li>
+				<li class="ui-li-anchor"><a href="#optionsPage">Options</a></li>
+			</ul>
+		</div>
+		
+		<!--  	<div class="ui-item show-icon" data-title="Back"></div>
+			<div class="ui-item human-icon" data-title="Search"></div>
+			<div class="ui-item delete-icon" data-title=""></div>
+			-->
+
 	</div>
 	<div id="routesMain" class="ui-page">
 		<div class="ui-content">
@@ -48,6 +56,11 @@
 			</tr>
 		</table>
 		</div>
+		<footer class="ui-footer ui-bottom-button ui-fixed">
+			<button class="ui-btn" id="buildRouteButton">Build</button>
+			<button class="ui-btn" id="buildGear">Build on Gear</button>
+		</footer>
+		
 	</div>
 	<div id="searchByAddressPage" class="ui-page">
 		<div class="ui-header">
@@ -58,10 +71,25 @@
 		</div>
 
 	</div>
+	
+	<div id="optionsPage" class="ui-page">
+		<div class="ui-header">
+			<h2 class="ui-title">Options</h2>
+		</div>
+		<div class="ui-content">
+			<input type="checkbox" name="bluetoothCheckbox" id="bluetoothCheckbox"/>
+			<label for="bluetoothCheckbox">Bluetooth connection</label><br>
+
+			<input type="checkbox" name="trafficCheckbox" id="trafficCheckbox"/>
+			<label for="trafficCheckbox">Traffic</label><br>
+		</div>
+		
+	</div>
+	
 	<script type="text/javascript" src="lib/jquery2.0.min.js"></script>
-	<script src="obile/js/maps.js"></script>
-	<script src="obile/js/main.js"></script>
-	<script src="obile/js/menu.js"></script>
+	<script src="js/maps.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/menu.js"></script>
 </body>
 
 </html>
