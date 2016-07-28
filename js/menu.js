@@ -3,7 +3,7 @@ var globalStampCounter = 0;
 
 setInterval(function(){
 	sendGeoposition();
-}, 7000);
+}, 15000);
 
 var page = document.querySelector("#mainPage"), handler = document
 		.querySelector("#menuButton"), menuPage = document
